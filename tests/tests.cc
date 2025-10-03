@@ -98,4 +98,6 @@ TEST_CASE("test_1") {
   atm.DepositCash(12345678, 1234, 32000);
   atm.PrintLedger("./prompt.txt", 12345678, 1234);
   REQUIRE(CompareFiles("./ex-1.txt", "./prompt.txt"));
+  REQUIRE_THROWS_AS(atm.PrintLedger("./prompt.txt", 12345678, 123),
+                    std::invalid_argument);
 }
