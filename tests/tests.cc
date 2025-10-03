@@ -93,5 +93,5 @@ TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
 TEST_CASE("test_1") {
   Atm atm;
   atm.RegisterAccount(12345678, 1234, "Sam Sepiol", 300.30);
-  REQUIRE(1 == 1);
+  REQUIRE(2 == 2);
 }
