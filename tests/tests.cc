@@ -70,11 +70,17 @@ TEST_CASE("Example: Simple widthdraw", "[ex-2]") {
                     std::runtime_error);
 
   atm.DepositCash(12345678, 1234, 20);
+  sam_account = accounts[{12345678, 1234}];
   REQUIRE(sam_account.balance == 300.30);
+
   REQUIRE_THROWS_AS(atm.DepositCash(12345678, 123, 300.30),
                     std::invalid_argument);
   REQUIRE_THROWS_AS(atm.DepositCash(12345678, 1234, -300.30),
                     std::invalid_argument);
+
+  atm.WithdrawCash(12345678, 1234, 300.30);
+  sam_account = accounts[{12345678, 1234}];
+  REQUIRE(sam_account.balance == 0);
 }
 
 TEST_CASE("Example: Print Prompt Ledger", "[ex-3]") {
